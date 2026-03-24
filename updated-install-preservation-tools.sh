@@ -1,9 +1,8 @@
-
 #!/usr/bin/env bash
 set -euo pipefail
 
 # One-time setup for Mac running Ubuntu VM (no BitCurator)
-# Install Siegfried, Brunnhilde, ClamAV, Bulk_Extractor, FITS, Roda-in, ImageMagick, ExifTool, Guymager, and BagIt
+# Install Siegfried, Brunnhilde, ClamAV, Bulk_Extractor, fdupes, FITS, Roda-in, ImageMagick, ExifTool, Guymager, and BagIt
 # Installs GNU Parallel and accepts its citation to prevent prompts later
 
 echo "==> Updating system packages"
@@ -15,7 +14,7 @@ sudo apt-get install -y \
   libewf-dev libssl-dev autoconf automake libtool pkg-config unzip tree \
   clamav sleuthkit flex bison libxml2-dev zlib1g-dev libsqlite3-dev libtre-dev wget \
   hdparm libgcc-s1 libqt5core5t64 libqt5widgets5t64 zlib1g libc6 libguytools2t64 libqt5dbus5t64 \
-  libstdc++6 libewf2 libparted0 | libparted libqt5gui5t64 | libqt5gui-gles smartmontools guymager
+  libstdc libewf2 libparted0 | libparted libqt5gui5t64 | libqt5gui-gles smartmontools guymager
 
 echo "==> Installing Siegfried"
 rm -rf siegfried
