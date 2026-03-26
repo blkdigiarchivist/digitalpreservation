@@ -64,7 +64,3 @@ for SRC in "${FILES[@]}"; do
 done
 
 echo "All derivatives written under: $DERIV_DIR"
-
-
-
-for 
