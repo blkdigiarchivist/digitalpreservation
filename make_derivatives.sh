@@ -1,8 +1,8 @@
-#!/usr/bin.env bash 
+#!/usr/bin/env bash 
 set -euo pipefail
 
 # Usage:
-# ./make_derivatives.sh Ok/path/to/images
+# ./make_derivatives.sh /path/to/images
 #
 # What it does:
 # - For JPG/PNG/TIF images under the given folder, 
