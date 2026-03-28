@@ -16,6 +16,8 @@ import re
 from pathlib import Path
 
 from lxml import etree
+import bag
+
 
 NS = {
     "mets": "http://www.loc.gov/METS/",
@@ -46,7 +48,7 @@ def read_manifest(bag: bagit.Bag):
                     if not line.strip():
                         continue
                     # Support either "checksum path" or "checksum *path" styles
-                    m = re.match(r"^([0-9A-Fa-f]+)\s+(?:\*?)$", line)
+                    m = re.match(r"^([0-9A-Fa-f]+)\s+\*?(.*)$", line)
                     if not m:
                         continue
                     checksum, relpath = m.group(1), m.group(2)
