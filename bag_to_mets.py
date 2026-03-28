@@ -93,7 +93,7 @@ def build_mets_tree(bag: bagit.Bag, algo: str, entries):
         # Turn "Source-Organization" -> "Source_Organization"
         tag = re.sub(r"\W+", "-", key).strip("-")
         # Ensure a valid XML element name (fallback if needed)
-        if not re.mnatch(r"^[A-za-z_][\w.\-]*$", tag):
+        if not re.match(r"^[A-za-z_][\w.\-]*$", tag):
             tag = f"Field_{tag or 'Unknown'}"
         el = etree.SubElement(xmlData, tag)
         el.text = value if value is not None else ""
@@ -119,7 +119,7 @@ def build_mets_tree(bag: bagit.Bag, algo: str, entries):
             file_el = etree.SubElement(
                 fileGrp,
                 "{%s}file" % NS["mets"],
-                ID=f"F{idx}",
+                ID=f"F{idk}",
                 CHECKSUM=checksum,
                 CHECKSUM_TYPE=checksum_type,
             )
@@ -153,10 +153,10 @@ def main():
     if not bag.is_valid(fast=True):
         raise SystemExit("Bag structure/metadata is not valid (fast check failed).")
     
-    algo, etnries = read_manifest(bag)
+    algo, entries = read_manifest(bag)
     tree = build_mets_tree(bag, algo, entries)
 
-    otu_path = Path(args.out) if args.out else (bag_dir / "mets.xml")
+    out_path = Path(args.out) if args.out else (bag_dir / "mets.xml")
     tree.write(
         str(out_path),
         pretty_print=True,
