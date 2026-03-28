@@ -16,7 +16,6 @@ import re
 from pathlib import Path
 
 from lxml import etree
-import bagit
 
 NS = {
     "mets": "http://www.loc.gov/METS/",
